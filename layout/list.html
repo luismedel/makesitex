@@ -1,0 +1,14 @@
+{% set body_class = "blog" %}
+
+{% include "page_head.html" %}
+
+{% if front_content %}
+{{ front_content | safe }}
+{% endif %}
+<hr>
+
+<ul class="blog-posts">
+{{ content | safe }}
+</ul>
+
+{% include "page_footer.html" %}

@@ -1,0 +1,8 @@
+{% set body_class = "post" %}
+
+{% include "page_head.html" %}
+
+<p><i><time datetime="{{ short_date }}">{{ human_date }}</time></i></p>
+{{ content | safe }}
+
+{% include "page_footer.html" %}

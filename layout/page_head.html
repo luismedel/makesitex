@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>{{ title }}{% if site_subtitle %} - {{ site_subtitle }}{% endif %}</title>
+        {% if summary %}
+        <meta name="description" content="{{ summary }}">
+        {% endif %}
+        {% if author %}
+        <meta name="author" content="{{ author }}">
+        {% endif %}
+
+        <style>
+            /* Shamefully copied from the awesome Bear Blog (https://bearblog.dev/) */
+            /* Color scheme by Steph Ango https://stephango.com/flexoki */
+
+            :root {
+                --width: 720px;
+                --font-content:  -apple-system, BlinkMacSystemFont, "Inter", "IBM Plex Sans", Segoe UI, Helvetica, Arial, sans-serif;
+                --font-main: var(--font-content);
+                --font-secondary: var(--font-content);
+
+                --font-scale: 1.1em;
+
+                --background-color: #FFFCF0;
+                --heading-color: #100F0F;
+                --text-color: #100F0F;
+                --blockquote-color: #100F0F;
+                --link-color: #205EA6;
+                --link-active-color: rgb(58, 169, 159);
+                --visited-color:  #5E409D;
+                --code-background-color: #F2F0E5;
+                --code-color: #6F6E69;
+            }
+
+            ::selection {
+                color: rgb(40, 39, 38);
+                background: rgb(58, 169, 159);
+            }
+
+        @media (prefers-color-scheme: dark) {
+                :root {
+                    --background-color: #100F0F;
+                    --heading-color: #CECDC3;
+                    --text-color: #CECDC3;
+                    --blockquote-color: #CECDC3;
+                    --link-color: #4385BE;
+                    --link-active-color: rgb(58, 169, 159);
+                    --visited-color:  #8B7EC8;
+                    --code-background-color: #1C1B1A;
+                    --code-color: #CECDC3;
+                }
+
+                ::selection {
+                    color: rgb(40, 39, 38);
+                    background: rgb(58, 169, 159);
+                }
+            }
+
+            body, html {
+                -webkit-font-smoothing: antialiased;
+                text-rendering: optimizeLegibility;
+            }
+            
+            body {
+                font-family: var(--font-secondary);
+                font-size: var(--font-scale);
+                margin: auto;
+                padding: 20px;
+                max-width: var(--width);
+                text-align: left;
+                background-color: var(--background-color);
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                line-height: 1.5;
+                color: var(--text-color);
+            }
+            
+            h1, h2, h3, h4, h5, h6 {
+                font-family: var(--font-main);
+                color: var(--heading-color);
+                font-weight: 500;
+            }
+
+            h1, h2 {
+                font-family: var(--font-main);
+                color: var(--heading-color);
+                font-weight: 500;
+            }
+
+            h3, h4, h5, h6 {
+                padding-top: 0.5em;
+                text-underline-offset: 0.15em;
+                text-decoration: underline;
+            }
+
+            a {
+                color: var(--link-color);
+                cursor: pointer;
+                text-decoration: none;
+            }
+            
+            a:hover {
+                text-decoration: underline; 
+                color: var(--link-active-color);
+            }
+            
+            nav a {
+                margin-right: 8px;
+            }
+            
+            strong, b {
+                color: var(--heading-color);
+            }
+            
+            button {
+                margin: 0;
+                cursor: pointer;
+            }
+            
+            main {
+                line-height: 1.6;
+            }
+            
+            table {
+                width: 100%;
+            }
+            
+            hr {
+                border: 0;
+                border-top: 1px dashed;
+            }
+            
+            img {
+                max-width: 100%;
+            }
+
+            pre, code {
+                font-family: monospace;
+                padding: 2px;
+                background-color: var(--code-background-color);
+                color: var(--code-color);
+                border-radius: 5px;
+            }
+
+            blockquote {
+                border-left: 1px solid #999;
+                color: var(--blockquote-color);
+                padding-left: 20px;
+                font-style: italic;
+            }
+            
+            footer {
+                padding: 25px 0;
+                text-align: center;
+            }
+            
+            .title:hover {
+                text-decoration: none;
+            }
+            
+            .title h1 {
+                font-size: 1.5em;
+            }
+            
+            .inline {
+                width: auto !important;
+            }
+            
+            .highlight, .code {
+                padding: 1px 15px;
+                background-color: var(--code-background-color);
+                color: var(--code-color);
+                border-radius: 3px;
+                margin-block-start: 1em;
+                margin-block-end: 1em;
+                overflow-x: auto;
+            }
+            
+            /* blog post list */
+            ul.blog-posts {
+                list-style-type: none;
+                padding: unset;
+            }
+
+            ul.blog-posts li {
+                display: flex;
+            }
+
+            ul.blog-posts li span {
+                flex: 0 0 130px;
+            }
+
+            ul.blog-posts li a:visited {
+                color: var(--visited-color);
+            }
+
+            ul.blog-posts li a:hover {
+                color: var(--link-active-color);
+            }
+        </style>
+    </head>
+
+    <body id="{{ slug }}" class="{{ body_class }}">
+        <header>
+            <h1>{{ site_subtitle }}</h1>
+            <nav>
+                <p>
+                {% for item in menu %}
+                    {% if item[1].startswith("http") %}
+                        <a href="{{ item[1] }}">{{ item[0] }}</a>
+                    {%else%}
+                        <a href="{{ base_path }}/{{ item[1] }}">{{ item[0] }}</a>
+                    {%endif%}
+                {% endfor %}
+                {% if social %}
+                    |
+                    {% for m in social %}
+                        <a href="{{ item[1] }}">{{ item[0] }}</a>
+                    {% endfor %}
+                {% endif %}
+                </p>
+            </nav>
+        </header>
+        <main>
+            <h2>{{ title }}</h2>
