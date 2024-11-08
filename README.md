@@ -171,6 +171,10 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
+## Example site?
+
+[Yes!](https://luismedel.github.io/makesitex/)
+
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
