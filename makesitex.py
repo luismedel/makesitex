@@ -66,7 +66,17 @@ def to_bool(value: t.Any) -> bool:
     elif isinstance(value, int):
         return value != 0
     elif isinstance(value, str):
-        return value.lower() in ("true", "yes", "ok", "si", "sí", "bai", "oui", "da", "1")
+        return value.lower() in (
+            "true",
+            "yes",
+            "ok",
+            "si",
+            "sí",
+            "bai",
+            "oui",
+            "da",
+            "1",
+        )
     else:
         return False
 
