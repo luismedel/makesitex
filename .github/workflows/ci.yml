@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: luismedel/setup-bluish@v3
+      - run: |
+          bluish --version
+          blu ci:mypy
+          blu ci:lint

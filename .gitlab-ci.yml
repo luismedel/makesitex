@@ -1,0 +1,13 @@
+image: luismedel/bluish-alpine:latest
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+pages:
+  script:
+    - blu site
+  artifacts:
+    paths:
+      - public
+  only:
+    - master

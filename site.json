@@ -1,0 +1,25 @@
+{
+    "base_path": "",
+    "author": "Luis Medel",
+    "site_subtitle": "Another makesitex site",
+    "site_url": "https://example.com",
+    "site_description": "",
+
+    "menu": [
+        ["/home", ""],
+        ["/blog", "blog"],
+        ["/software", "https://github.com/luismedel"]
+    ],
+
+    "content_dirs": {
+        "drafts": {
+            "generate_rss": false
+        },
+        "blog": {
+            "title": "My blog",
+            "slug": "blog",
+            "generate_index": true,
+            "generate_rss": true
+        }
+    }
+}

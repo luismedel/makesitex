@@ -1,0 +1,47 @@
+
+var:
+  env_dir: .e_make
+  public_dir: ./public
+  server_port: 8000
+
+jobs:
+  _prepare:
+    steps:
+      - run: |
+          rm -rf "${{ public_dir }}"
+          echo $(git rev-parse --short HEAD) > static/release.txt
+          if [ ! -d "${{ env_dir }}" ]; then
+            python3 -m venv "${{ env_dir }}"
+            . "${{ env_dir }}/bin/activate"
+            pip install -r requirements-makesitex.txt --disable-pip-version-check
+            deactivate
+          fi
+
+  site:
+    depends_on:
+      - _prepare
+    steps:
+      - run: |
+          . "${{ env_dir }}/bin/activate"
+          python makesitex.py --output "${{ public_dir }}"
+          cp -r ./static/* "${{ public_dir }}"
+          deactivate
+          rm -rf "${{ env_dir }}"
+
+  serve:
+    depends_on:
+      - site
+    working_directory: ${{ public_dir }}
+    echo_commands: false
+    steps:
+      - run: |
+          echo "Starting http server on http://localhost:${{ server_port }}. Press Ctrl+C to stop.";
+          if python3 -c 'import http.server'; then
+              python3 -m http.server ${{ server_port }};
+          elif python -c 'import http.server'; then
+              python -m http.server ${{ server_port }};
+          elif python -c 'import SimpleHTTPServer'; then
+              python -m SimpleHTTPServer ${{ server_port }};
+          else
+              echo Cannot find Python http.server or SimpleHTTPServer;
+          fi;

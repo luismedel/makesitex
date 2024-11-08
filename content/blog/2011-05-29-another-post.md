@@ -1,10 +1,9 @@
 ---
 title: Another post
 summary: blah, blah, blah...
-date: 2012-06-20
 ---
 
-This is a nother post.
+This post gets its slug from the file name.
 
 ## Lorem ipsum dolor
 

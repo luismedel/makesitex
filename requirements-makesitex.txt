@@ -1,0 +1,11 @@
+click==8.1.7
+Jinja2==3.1.2
+braceexpand==0.1.7
+watchdog==6.0.0
+
+Markdown==3.4.3
+pymdown_extensions==10.3
+Pygments==2.16.1
+
+graphviz==0.20.1
+git+https://github.com/luismedel/markdown-inline-graphviz
