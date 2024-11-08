@@ -25,8 +25,6 @@ jobs:
           . "${{ env_dir }}/bin/activate"
           python makesitex.py --output "${{ public_dir }}"
           cp -r ./static/* "${{ public_dir }}"
-          deactivate
-          rm -rf "${{ env_dir }}"
 
   serve:
     depends_on:
