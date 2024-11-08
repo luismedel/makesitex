@@ -1,8 +1,7 @@
 {
-    "base_path": "",
+    "base_path": "makesitex",
     "author": "Luis Medel",
     "site_subtitle": "Another makesitex site",
-    "site_url": "https://example.com",
     "site_description": "",
 
     "menu": [
