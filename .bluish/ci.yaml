@@ -10,7 +10,7 @@ jobs:
           if [ ! -d "${{ env_dir }}" ]; then
             python3 -m venv "${{ env_dir }}"
             . "${{ env_dir }}/bin/activate"
-            pip install -r requirements.txt --disable-pip-version-check
+            pip install -r requirements-makesitex.txt --disable-pip-version-check
             pip install -r requirements-linting.txt --disable-pip-version-check
             deactivate
           fi
