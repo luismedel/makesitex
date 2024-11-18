@@ -374,7 +374,7 @@ def make_site(
         generate_index: bool = to_bool(meta.get("generate_index"))
         generate_rss: bool = to_bool(meta.get("generate_rss"))
 
-        dir_params = dict(dir=output_subdir, title=title, **site_params)
+        dir_params = dict(dir=output_subdir, title=title, current_content_dir=meta, **site_params)
 
         exclusion_prefix = "" if all else "[!_]"
 
