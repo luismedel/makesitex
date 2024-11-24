@@ -1,0 +1,10 @@
+<title>{{ title }}</title>
+<link rel="alternate" href="{{ site_url }}/{{ dir }}/{{ slug }}/"/>
+<id>{{ site_url }}/{{ dir }}/{{ slug }}/</id>
+<summary>
+<![CDATA[
+<p>{{ summary }}</p>
+]]>
+</summary>
+
+<updated>{{ rfc_2822_date }}</updated>

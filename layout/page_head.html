@@ -11,7 +11,8 @@
         <meta name="author" content="{{ author }}">
         {% endif %}
         {% if current_content_dir and current_content_dir.generate_rss %}
-        <link rel="alternate" type="application/rss+xml" title="{{ title }}{% if site_subtitle %} - {{ site_subtitle }}{% endif %}" href="rss.xml"/>
+        <link rel="alternate" type="application/rss+xml" title="{{ title }}{% if site_subtitle %} - {{ site_subtitle }}{% endif %}" href="feed.xml"/>
+        <link rel="alternate" type="application/atom+xml" title="{{ title }}{% if site_subtitle %} - {{ site_subtitle }}{% endif %}" href="feed.atom"/>
         {% endif %}
 
         <style>

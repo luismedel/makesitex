@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>{{ title }}</title>
+    <link rel="self" href="{{ site_url }}/"/>
+    <id>{{ site_url }}/</id>
+    {{ content }}
+</feed>

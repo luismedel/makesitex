@@ -4,7 +4,6 @@
 <description>
 <![CDATA[
 <p>{{ summary }}</p>
-<p><a href="{{ site_url }}/{{ dir }}/{{ slug }}/">Leer más</a></p>
 ]]>
 </description>
 <pubDate>{{ rfc_2822_date }}</pubDate>

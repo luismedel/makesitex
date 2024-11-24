@@ -347,6 +347,8 @@ def make_site(
     item_layout = jinja_env.get_template("item.html")
     feed_xml = jinja_env.get_template("feed.xml")
     item_xml = jinja_env.get_template("item.xml")
+    feed_atom = jinja_env.get_template("feed.atom")
+    item_atom = jinja_env.get_template("item.atom")
 
     # Create site pages.
     make_pages(
@@ -419,12 +421,20 @@ def make_site(
             make_index(
                 None,
                 content_pages,
-                f"{output}/{output_subdir}/rss.xml",
+                f"{output}/{output_subdir}/feed.xml",
                 feed_xml,
                 item_xml,
                 dir_params,
             )
 
+            make_index(
+                None,
+                content_pages,
+                f"{output}/{output_subdir}/feed.atom",
+                feed_atom,
+                item_atom,
+                dir_params,
+            )
 
 @click.command()
 @click.option("--all", is_flag=True, help="Generate all content, including drafts.")
